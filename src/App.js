@@ -48,7 +48,7 @@ class App extends Component {
       {this.state.flg ?
       <p style={this.msgStyle1}>{this.state.msg}</p>
       :
-      <p style={this.msgStyle2}>{this.state.msg}</p>
+      <p style={this.msgStyle2}>0</p>
       }
 
       <button style={this.btnStyle} onClick={this.doAction}>click</button>
