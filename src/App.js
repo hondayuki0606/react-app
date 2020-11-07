@@ -29,9 +29,9 @@ class App extends Component {
    doAction(e){
      let x = e.pageX;
      let y = e.pageY;
-     this.data.push({x:x,y:y});
-      this.setState({
-    list:this.data
+     this.data.push({x:x,y:y}); 
+     this.setState({
+      list:this.data
     });
    }
    draw(d){
