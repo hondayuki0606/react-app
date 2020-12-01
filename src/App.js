@@ -4,6 +4,7 @@ import Rect from './Rect';
 import './App.css';
 
 class App extends Component {
+
   input = '';
 
   msgStyle = {
@@ -16,6 +17,7 @@ class App extends Component {
     fontSize:"20pt",
     padding:"5px"
   }
+
 
   constructor(props){
     super(props);
@@ -49,7 +51,8 @@ class App extends Component {
        <label>
         <span style={this.inputStyle}></span>Message:
          <input type="text" style={this.inputStyle}
-         onChange={this.doChange} />
+         onChange={this.doChange} 
+         required pattern="[A-Za-z _,.]+" />
        </label>
        <input type="submit" style={this.inputStyle} value="Click" />
       </form>

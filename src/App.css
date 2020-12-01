@@ -47,6 +47,13 @@ p {
   font-size:16pt;
 }
 
+input:invalid {
+  border: 2px dashed Red;
+}
+input:valid {
+  border: 1px solid blue;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
