@@ -13,50 +13,50 @@ class App extends Component {
     margin:"20px 0px",
     padding:"5px",
   }
-  inputStyle = {
-    fontSize:"20pt",
-    padding:"5px"
-  }
-
 
   constructor(props){
     super(props);
     this.state = {
       message:'type your name:'
     };
-    this.doChange = this.doChange.bind(this);
-    this.doSubmit = this.doSubmit.bind(this); 
+    this.doCheck = this.doCheck.bind(this);
   }
 
-   doChange(event) {
-     this.input = event.target.value;
+   doCheck(event) {
+     alert(event.target.value +
+      "は長すぎます。(最大10文字)");
    }
 
-   doSubmit(event){
-     this.setState({
-       message: 'Hello, ' + this.input + '!!'
-     });
-     // 下記をコメントアウトするとページが再ロードされてしまう
-     // このメソッドはイベントを消費するメソッドです。
-     // 消費というのは、これで発生したイベントをなくすという意味です。
-     // イベントをなくすと、もう実際にフォームが送信されることはなくなります。
-     event.preventDefault();
-   }
-   
    render(){
     return <div>
       <h1>React</h1>
       <h2>{this.state.message}</h2>
-      <form onSubmit={this.doSubmit}>
-       <label>
-        <span style={this.inputStyle}></span>Message:
-         <input type="text" style={this.inputStyle}
-         onChange={this.doChange} 
-         required pattern="[A-Za-z _,.]+" />
-       </label>
-       <input type="submit" style={this.inputStyle} value="Click" />
-      </form>
+      <Message maxlength="10" onCheck={this.doCheck} />
     </div>;
   }
 }
+
+class Message extends Component {
+  inputStyle = {
+    fontSize:"12pt",
+    padding:"5px"
+  }
+  constructor(props){
+    super(props);
+    this.doChange = this.doChange.bind(this);
+  }
+
+  doChange(e) {
+    if (e.target.value.length > this.props.maxlength){
+      this.props.onCheck(e);
+      e.target.value = 
+      e.target.value.substr(0,this.props.maxlength);
+    }
+  }
+  render(){
+    return <input type="text" style={this.inputStyle}
+    onChange ={this.doChange}/>
+  }
+}
+
 export default App;
