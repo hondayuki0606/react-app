@@ -31,6 +31,9 @@ class App extends Component {
     return <div>
       <h1>React</h1>
       <h2>{this.state.message}</h2>
+      {/* maxlengthは、最大文字数を示す属性です。そしてonCheckが、エラー時に実行する処理を設定する属性です。
+      ここでは、doCheckというメソッドを実行するようにしてあります。
+      こんな具合にonClickやonSubmitなどと同じ感覚で、オリジナルのイベント属性onCheckを使うことができるのがわかります。 */}
       <Message maxlength="10" onCheck={this.doCheck} />
     </div>;
   }
