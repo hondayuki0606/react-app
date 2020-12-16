@@ -56,10 +56,15 @@ class Message extends Component {
       e.target.value.substr(0,this.props.maxlength);
     }
   }
+  // では、MessageコンポーネントでonCheckがどのように組み込まれているのかを確認しましょう
+  // このMessageコンポーネントでは、<input type="text">タグを作って表示しています。
+  // renderメソッドを見るとこのようになっています。
   render(){
     return <input type="text" style={this.inputStyle}
     onChange ={this.doChange}/>
   }
+  // onChangeにdoChangeメソッドを設定してあります。また、constructorメソッドでも
+  // doChangewコンポーネントで使えるように設定してありますね。
 }
 
 export default App;
