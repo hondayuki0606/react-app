@@ -46,7 +46,7 @@ class Message extends Component {
   }
   constructor(props){
     super(props);
-    this.doChange = this.doChange.bind(this);
+    this.doChange = this.doCheck.bind(this);
   }
 
   doChange(e) {
