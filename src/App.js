@@ -47,6 +47,9 @@ class Message extends Component {
   constructor(props){
     super(props);
     this.doChange = this.doCheck.bind(this);
+    // このdoChangega、このMessageコンポーネントのポインタといっても
+    // onChangeで値が変更されるとdoChangeが実行されるようになっています。
+    // そしてこのdoChangeで値のチェックを行っています。
   }
 
   doChange(e) {
