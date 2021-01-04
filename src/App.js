@@ -44,6 +44,8 @@ class Message extends Component {
     fontSize:"12pt",
     padding:"5px"
   }
+  // onChangeにdoChangeメソッドを設定してあります。また、constructorメソッドでも
+  // doChangewコンポーネントで使えるように設定してありますね。
   constructor(props){
     super(props);
     this.doChange = this.doCheck.bind(this);
@@ -52,6 +54,10 @@ class Message extends Component {
     // そしてこのdoChangeで値のチェックを行っています。
   }
 
+  // e.target.value.lengthとthis.props.maxlengthを比べていますね。
+  // e.target.value.lengthはコンポーネントに入力されたテキストの文字列、this.props.maxlengthはコンポーネントのmaxlength属性に入力された文字列の値になります。
+  // これらを比較し、入力された文字列がmaxlengthより大きくなったら、this.props.onCheck(e)を実行しています。
+  // これで、onCkick属性に設定されたメソッドが実行される、というわけです。
   doChange(e) {
     if (e.target.value.length > this.props.maxlength){
       this.props.onCheck(e);
@@ -66,8 +72,7 @@ class Message extends Component {
     return <input type="text" style={this.inputStyle}
     onChange ={this.doChange}/>
   }
-  // onChangeにdoChangeメソッドを設定してあります。また、constructorメソッドでも
-  // doChangewコンポーネントで使えるように設定してありますね。
+
 }
 
 export default App;
