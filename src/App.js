@@ -54,10 +54,6 @@ class Message extends Component {
     // そしてこのdoChangeで値のチェックを行っています。
   }
 
-  // e.target.value.lengthとthis.props.maxlengthを比べていますね。
-  // e.target.value.lengthはコンポーネントに入力されたテキストの文字列、this.props.maxlengthはコンポーネントのmaxlength属性に入力された文字列の値になります。
-  // これらを比較し、入力された文字列がmaxlengthより大きくなったら、this.props.onCheck(e)を実行しています。
-  // これで、onCkick属性に設定されたメソッドが実行される、というわけです。
   doChange(e) {
     if (e.target.value.length > this.props.maxlength){
       this.props.onCheck(e);
@@ -65,6 +61,20 @@ class Message extends Component {
       e.target.value.substr(0,this.props.maxlength);
     }
   }
+  // e.target.value.lengthとthis.props.maxlengthを比べていますね。
+  // e.target.value.lengthはコンポーネントに入力されたテキストの文字列、this.props.maxlengthはコンポーネントのmaxlength属性に入力された文字列の値になります。
+  // これらを比較し、入力された文字列がmaxlengthより大きくなったら、this.props.onCheck(e)を実行しています。
+  // これで、onCkick属性に設定されたメソッドが実行される、というわけです。
+
+  // この「独自イベントの作成」は、実際にやってみると結構難しいです。そもそも
+  // どうやって独自イベントを発生させればいいかがわかるまでわからないかもしれません。
+  // とりあえず、ここでやった「onChangeで、入力値をチェックして、問題があったら
+  // this.props.onCheckを実行する」というやり方をよく理解しておきましょう。
+  // そして、自分でコンポーネントを作って、同じように組み込んでみるとよいでしょう。
+  // そうすると、「イベントの属性を追加するというのがどういう作業なのか」がなんとなく
+  // 分かってくると思います。
+
+
   // では、MessageコンポーネントでonCheckがどのように組み込まれているのかを確認しましょう
   // このMessageコンポーネントでは、<input type="text">タグを作って表示しています。
   // renderメソッドを見るとこのようになっています。
